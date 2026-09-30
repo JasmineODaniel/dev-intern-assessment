@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>OSCE Rota</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 1000px;
+            margin: 32px auto;
+            padding: 0 16px;
+            color: #1f2933;
+            background: #ffffff;
+        }
+        .inputs {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        textarea {
+            width: 260px;
+            height: 140px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+        th, td {
+            border: 1px solid #cbd2d9;
+            padding: 6px 10px;
+        }
+        th {
+            background: #f0f4f8;
+        }
+        .message {
+            margin-top: 24px;
+            color: #b42318;
+        }
+    </style>
+</head>
+<body>
+    <h1>OSCE Rota</h1>
+    <p>This page uses your <code>createRota</code> function from <code>rota.js</code>. You don't need to change this file.</p>
+
+    <div class="inputs">
+        <label>Students (one per line)<br>
+            <textarea id="students-input">Amara
+Ben
+Chloe
+Daniel</textarea>
+        </label>
+        <label>Stations (one per line)<br>
+            <textarea id="stations-input">History taking
+Examination
+Communication
+Data interpretation</textarea>
+        </label>
+    </div>
+    <p>
+        <label><input type="checkbox" id="use-rests"> Add rest stations (stretch)</label>
+    </p>
+    <button id="generate">Generate rota</button>
+
+    <div id="output"></div>
+
+    <script src="rota.js"></script>
+    <script>
+        function readLines(textareaId) {
+            return document.getElementById(textareaId).value
+                .split('\n')
+                .map((line) => line.trim())
+                .filter((line) => line !== '');
+        }
+
+        function showMessage(output, text) {
+            const message = document.createElement('p');
+            message.className = 'message';
+            message.textContent = text;
+            output.appendChild(message);
+        }
+
+        document.getElementById('generate').addEventListener('click', () => {
+            const output = document.getElementById('output');
+            output.innerHTML = '';
+
+            const students = readLines('students-input');
+            const stations = readLines('stations-input');
+            const useRests = document.getElementById('use-rests').checked;
+
+            let rota;
+            try {
+                rota = useRests ? createRotaWithRests(students, stations) : createRota(students, stations);
+            } catch (e) {
+                showMessage(output, 'Your function threw an error: ' + e.message);
+                return;
+            }
+
+            if (rota === null) {
+                showMessage(output, 'Not possible: there are more students than stations.');
+                return;
+            }
+            if (!Array.isArray(rota)) {
+                showMessage(output, 'Your function returned ' + JSON.stringify(rota) + ' instead of an array of rounds.');
+                return;
+            }
+
+            const columns = stations.slice();
+            rota.forEach((round) => {
+                round.forEach((assignment) => {
+                    if (!columns.includes(assignment.station)) {
+                        columns.push(assignment.station);
+                    }
+                });
+            });
+
+            const table = document.createElement('table');
+            const headerRow = document.createElement('tr');
+            ['Round'].concat(columns).forEach((text) => {
+                const header = document.createElement('th');
+                header.textContent = text;
+                headerRow.appendChild(header);
+            });
+            table.appendChild(headerRow);
+
+            rota.forEach((round, roundIndex) => {
+                const row = document.createElement('tr');
+                const roundCell = document.createElement('th');
+                roundCell.textContent = roundIndex + 1;
+                row.appendChild(roundCell);
+                columns.forEach((station) => {
+                    const cell = document.createElement('td');
+                    const assignment = round.find((item) => item.station === station);
+                    cell.textContent = assignment ? assignment.student : '-';
+                    row.appendChild(cell);
+                });
+                table.appendChild(row);
+            });
+
+            output.appendChild(table);
+        });
+    </script>
+</body>
+</html>

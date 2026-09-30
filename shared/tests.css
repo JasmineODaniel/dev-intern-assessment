@@ -1,0 +1,28 @@
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 800px;
+    margin: 32px auto;
+    padding: 0 16px;
+    color: #1f2933;
+    background: #ffffff;
+}
+
+.result {
+    font-family: Consolas, monospace;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 4px;
+}
+
+.pass {
+    background: #e3f9e5;
+}
+
+.fail {
+    background: #ffe3e3;
+}
+
+.detail {
+    margin-top: 4px;
+    color: #8a1c1c;
+}

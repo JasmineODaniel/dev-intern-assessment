@@ -1,0 +1,13 @@
+OSCE GRADE REPORT
+========================================
+Amara Okafor        81%     PASS
+Ben Carter          100%    PASS
+Chloe Nguyen        50%     PASS
+Daniel Mensah       92%     PASS
+Ella Fitzgerald     38%     FAIL
+Farah Haddad        58%     PASS
+----------------------------------------
+Passed: 5
+Failed: 1
+Class average: 69.8%
+Top student: Ben Carter (100%)
