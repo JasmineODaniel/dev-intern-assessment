@@ -60,7 +60,7 @@ You'll hand in your work through Git and GitHub. How you use Git is part of what
 
 1. **Get the code.** Clone this repository to your computer:
    ```
-   git clone https://github.com/<OWNER>/dev-intern-assessment.git
+   git clone https://github.com/dipo1/dev-intern-assessment.git
    ```
 2. **Make your own repository.** Create a new, empty **public** repository on your own GitHub account. Don't tick "Add a README". Point your local copy at it and push:
    ```
