@@ -7,19 +7,24 @@
 //    isPassingScore(49, 50) -> false
 function isPassingScore(score, passMark) {
     // TODO
+    return score>= passMark;
 }
+
 
 // 2. Return the full name with extra spaces removed and each name capitalised
 //    (first letter upper case, the rest lower case).
 //    formatFullName('  ada ', 'LOVELACE') -> 'Ada Lovelace'
 function formatFullName(firstName, lastName) {
     // TODO
+    return firstName.trim().charAt(0).toUpperCase() + firstName.trim().slice(1).toLowerCase() + ' ' + lastName.trim().charAt(0).toUpperCase() + lastName.trim().slice(1).toLowerCase();
 }
 
 // 3. Return how many scores in the array are at or above the pass mark.
 //    countPassed([40, 50, 60, 70], 50) -> 3
 function countPassed(scores, passMark) {
     // TODO
+    return scores.filter(score => score >= passMark).length;
+
 }
 
 // 4. Return the average of the scores, rounded to 1 decimal place.
@@ -28,6 +33,13 @@ function countPassed(scores, passMark) {
 //    averageScore([1, 2, 2]) -> 1.7
 function averageScore(scores) {
     // TODO
+    if (scores.length === 0) {
+        return 0;
+    }
+    return Number (
+        (scores.reduce(
+            (zad, scores) => zad + scores, 0 / scores.length).toFixed(1)
+        ));
 }
 
 // 5. Each student is an object like { name: 'Amara', score: 81 }.
@@ -36,6 +48,18 @@ function averageScore(scores) {
 //    If the array is empty, return null.
 function highestScorer(students) {
     // TODO
+    if (students.length === 0) {
+        return null;
+    }
+     let highestScorer = students[0];
+      for (let student of students) {
+        if (student.score > highestScorer.score) {
+          highestScorer = student;
+        }
+
+        return highestScorer.name;
+      }
+    
 }
 
 // 6. Each result is an object like { student: 'Amara', station: 'Examination', score: 18 }.
@@ -49,6 +73,7 @@ function highestScorer(students) {
 //    -> { 'Examination': ['Amara', 'Ben'], 'Communication': ['Amara'] }
 function groupByStation(results) {
     // TODO
+
 }
 
 // 7. Convert a percentage into a letter grade:
@@ -59,6 +84,19 @@ function groupByStation(results) {
 //    If the percentage is not a number, or is below 0 or above 100, return 'Invalid'.
 function letterGrade(percentage) {
     // TODO
+    if(typeof percentage !== 'number' || percentage < 0 || percentage > 100) {
+        return 'Invalid';
+    }
+    if (percentage >= 70) {
+        return 'A';
+    }
+    if (percentage >= 60) {
+        return 'B';
+    }
+    if (percentage >= 50) {
+        return 'C';
+    }
+    return 'F';
 }
 
 // 8. STRETCH (optional): Turn a line of text into a result object.
