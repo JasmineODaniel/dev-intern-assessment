@@ -20,7 +20,7 @@ In `NOTES.md`, write which option you used. If you had setup problems, say what 
 Answer these in `NOTES.md` **before** you change any code:
 
 1. Describe in plain English what the script does, from top to bottom (5–10 sentences).
-2. What does `.` do in `'OSCE GRADE REPORT' . PHP_EOL`? What is the JavaScript equivalent?
+2. What does 45 do in `'OSCE GRADE REPORT' . PHP_EOL`? What is the JavaScript equivalent?
 3. How would you write `array('name' => 'Ben Carter', 'scores' => array(25, 25, 25, 25))` in JavaScript?
 4. What does `foreach ($students as $student)` do? Write the JavaScript equivalent.
 5. What does `str_pad($student['name'], 20)` do? How did you find out?

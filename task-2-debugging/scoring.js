@@ -14,7 +14,7 @@ function calculatePercentage(total, stationCount) {
 }
 
 function hasPassed(percentage) {
-    return percentage > PASS_MARK;
+    return percentage >= PASS_MARK;
 }
 
 function calculateClassAverage(results) {
@@ -22,10 +22,11 @@ function calculateClassAverage(results) {
         return 0;
     }
     let sum = 0;
-    for (let i = 1; i < results.length; i++) {
+    for (let i = 0; i < results.length; i++) {
         sum += results[i].percentage;
     }
     return Math.round((sum / results.length) * 10) / 10;
+    
 }
 
 function getTopScores(results, count) {
