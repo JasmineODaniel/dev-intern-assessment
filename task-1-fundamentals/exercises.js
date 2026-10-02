@@ -16,7 +16,7 @@ function isPassingScore(score, passMark) {
 //    formatFullName('  ada ', 'LOVELACE') -> 'Ada Lovelace'
 function formatFullName(firstName, lastName) {
     // TODO
-    return firstName.trim().charAt(0).toUpperCase() + firstName.trim().slice(1).toLowerCase() + ' ' + lastName.trim().charAt(0).toUpperCase() + lastName.trim().slice(1).toLowerCase();
+    return firstName.trim().charAt(0).toUpperCase() + firstName.slice(1).toLowerCase() + ' ' + lastName.trim().charAt(0).toUpperCase() + lastName.trim().slice(1).toLowerCase();
 }
 
 // 3. Return how many scores in the array are at or above the pass mark.
