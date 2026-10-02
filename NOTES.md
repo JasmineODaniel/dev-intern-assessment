@@ -4,9 +4,9 @@
 
 | Task | Roughly how long | Finished? (yes / partly / no) |
 |------|------------------|-------------------------------|
-| 1      1: 50 almost 2hrs       almost
-| 2    |                  |                               |
-| 3    |                  |                               |
+| 1      1: 50 almost 2hrs       partly
+| 2    |  2hrs            |     partly                    |
+| 3    |    76mins        |      partly                         |
 | 4    |                  |                               |
 
 ---
@@ -37,14 +37,15 @@ when i ran the test at first.. node couldnt find 'exercise.test.js' because i wa
 ## Task 3: PHP
 
 **Part A: how I ran it:**
-
+the first option was not bringing any results.. i tried severally so I searched for other options and used programiz.com and it ran the code.
 
 **Part B: my answers:**
 
-1.
-2.
-3.
-4.
+1. the script is a OSCE grade report that has a passmark of 50..  in javascript it is constant im not sure about php here.. but moving further we have an array of names and scores of each student and the function 'calculate-total' calculates the total scores of this students while the calculate-percentage converts the total scores of each studenst into a percentage and the 'has-opassed function' checks whether the percentage of the student reaches or is higher than the passmark them it either results pass or fail
+2.  `.` in php is to add and in javascript + is addition operator 
+3.  const scores = [ {name: 'Ben Carter', scores: [25, 25, 25, 25]}
+]
+4. it loops over a list and the equivalent in javascript is 'for' thats for (const students of students)
 5.
 
 **Part C: what caused the bug, and why it wouldn't happen in JavaScript:**
